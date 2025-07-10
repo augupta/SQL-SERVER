@@ -3,6 +3,7 @@
 # DDL- CREATE ALTER DROP TRUNCATE
 # DCL- GRANT REVOKE DENY, control the access of the data stored in database. only authorise users perform certain action on database.
 # GRANT permission_typ ON object TO user; GRANT SELECT ON PRODUCTS TO JOHN;
+# REVOKE permission_typ ON object FROM user; REVOKE INSERT ON PRODUCTS FROM JOHN;
 
 # DATA TYPES- INT, DECIMAL OR NUMERIC, CHAR, VARCHAR, NVARCHAR, DATE DATETIME, BIT, FLOAT, MONEY
 
@@ -22,3 +23,11 @@
 # NULL IS NULL -> TRUE
 # NULL value is different from '' & zero. NULL represents missing or unknown data.
 # NOT NULL means that column must has a value.
+
+# Ex of sql command including primary and foreign key
+# Select All Enrollments with Student and Course Information
+SELECT E.EnrollmentID, S.FirstName, S.LastName, C.CourseName,
+E.EnrollmentDate
+FROM Enrollments E
+JOIN Students S ON E.StudentID = S.StudentID
+JOIN Courses C ON E.CourseID = C.CourseID;
