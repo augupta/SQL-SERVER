@@ -6,3 +6,6 @@
 # DATA TYPES- INT, DECIMAL OR NUMERIC, CHAR, VARCHAR, NVARCHAR, DATE DATETIME, BIT, FLOAT, MONEY
 
 # Order in select statement: SELECT FROM WHERE GROUP BY HAVING ORDER BY
+
+# Primary Key- is a column or combonation of columns that uniquely identifies the each row in a table.
+
