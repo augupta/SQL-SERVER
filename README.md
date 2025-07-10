@@ -2,8 +2,8 @@
 # DML Commands: SELECT INSERT UPDATE DELETE
 # DDL- CREATE ALTER DROP TRUNCATE
 # DCL- GRANT REVOKE DENY, control the access of the data stored in database. only authorise users perform certain action on database.
-# GRANT permission_typ ON object TO user; GRANT SELECT ON PRODUCTS TO JOHN;
-# REVOKE permission_typ ON object FROM user; REVOKE INSERT ON PRODUCTS FROM JOHN;
+GRANT permission_typ ON object TO user; GRANT SELECT ON PRODUCTS TO JOHN;
+REVOKE permission_typ ON object FROM user; REVOKE INSERT ON PRODUCTS FROM JOHN;
 
 # DATA TYPES- INT, DECIMAL OR NUMERIC, CHAR, VARCHAR, NVARCHAR, DATE DATETIME, BIT, FLOAT, MONEY
 
@@ -17,12 +17,13 @@
 
 # Predicates- consitions or expressions use to filter the data, for ex: BETWEEN, IN, LIKE, IS NULL, 
 
-# NULL +2 = NULL
-# NULL+ 'MYSTR'= NULL
-# NULL= NULL -> FALSE
-# NULL IS NULL -> TRUE
-# NULL value is different from '' & zero. NULL represents missing or unknown data.
-# NOT NULL means that column must has a value.
+# NULL & NOT NULL
+NULL +2 = NULL
+NULL= NULL -> FALSE
+NULL+ 'MYSTR'= NULL
+NULL IS NULL -> TRUE
+NULL value is different from '' & zero. NULL represents missing or unknown data.
+NOT NULL means that column must has a value.
 
 # Ex of sql command including primary and foreign key
 # Select All Enrollments with Student and Course Information
