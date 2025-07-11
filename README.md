@@ -32,3 +32,14 @@ E.EnrollmentDate
 FROM Enrollments E
 JOIN Students S ON E.StudentID = S.StudentID
 JOIN Courses C ON E.CourseID = C.CourseID;
+
+# CROSS JOIN
+
+# SELF JOIN
+
+# Inserting Data using SELECT INTO statement to create a new table from the data of existing table or just insert the data from one table to another.
+INSERT INTO tem_emp(emp_id, name)
+SELECT emp_id, name FROM employees;
+OR
+SELECT emp_id, name INTO new_emp FROM employees;
+
