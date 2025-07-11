@@ -51,7 +51,12 @@ SELECT * FROM employees ORDER BY emp_ID OFFSET 10 ROWS FETCH NEXT 20 ROWS ONLY;
 Transaction allows either full data to process or no data. It doesn't allow partial data to process which helps in preventing the incomplete or incorrect data changes in table.
 # ACID Properties:
 
+ACID Properties of Transactions:
 
+Atomicity - All or nothing
+Consistency - Data remains valid
+Isolation - Concurrent transactions don't interfere
+Durability - Committed changes are permanent
 
 # Syntax of TRANSACTION
 BEGIN TRANSACTION
