@@ -48,6 +48,16 @@ SELECT TOP(10) * FROM employees;
 SELECT * FROM employees ORDER BY emp_ID OFFSET 10 ROWS FETCH NEXT 20 ROWS ONLY;
 
 # TRANSACTION/CONCURRENCY are key concepts which are used to ensure data integrity and consistency when multiple users or processes accessing and modifying the data at the same time.
+Transaction allows either full data to process or no data. It doesn't allow partial data to process which helps in preventing the incomplete or incorrect data changes in table.
+# ACID Properties:
 
 
 
+# Syntax of TRANSACTION
+BEGIN TRANSACTION
+UPDATE employees SET salary = salary+1000 WHERE emp_id=1;
+COMMITT TRANSACTION
+
+# CONCURRENCY is a situation when multiple users or processes accessing and modifying the data at the same time. It is common in multiple user environments.
+Shared lock: when two users are trying to read the data from same table at same time, they will get the shared lock. It is shareable to other user.
+Exclusive lock: when two users are trying to modify, alter or update the data in a table. The command of user gets commited first who process first and the command of the second user will go in processing. It will process after the first ones's.
