@@ -43,3 +43,11 @@ SELECT emp_id, name FROM employees;
 OR
 SELECT emp_id, name INTO new_emp FROM employees;
 
+# TOP & OFFSET FETCH
+SELECT TOP(10) * FROM employees;
+SELECT * FROM employees ORDER BY emp_ID OFFSET 10 ROWS FETCH NEXT 20 ROWS ONLY;
+
+# TRANSACTION/CONCURRENCY are key concepts which are used to ensure data integrity and consistency when multiple users or processes accessing and modifying the data at the same time.
+
+
+
