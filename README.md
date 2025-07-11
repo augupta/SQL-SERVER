@@ -61,3 +61,5 @@ COMMITT TRANSACTION
 # CONCURRENCY is a situation when multiple users or processes accessing and modifying the data at the same time. It is common in multiple user environments.
 Shared lock: when two users are trying to read the data from same table at same time, they will get the shared lock. It is shareable to other user.
 Exclusive lock: when two users are trying to modify, alter or update the data in a table. The command of user gets commited first who process first and the command of the second user will go in processing. It will process after the first ones's.
+
+# VIEW- Virtual table, doesnt store the data, simplest the complex queries, enhances the security, encourage the reusability, data abstraction
