@@ -62,12 +62,12 @@ COMMITT TRANSACTION
 Shared lock: when two users are trying to read the data from same table at same time, they will get the shared lock. It is shareable to other user.
 Exclusive lock: when two users are trying to modify, alter or update the data in a table. The command of user gets commited first who process first and the command of the second user will go in processing. It will process after the first ones's.
 
-# VIEW- Virtual table, doesnt store the data, simplest the complex queries, enhances the security, encourage the reusability, data abstraction
+# VIEW- Virtual table, doesnt store the data, simplest the complex queries, enhances the security, encourage the reusability, data abstraction, can only save the SELECT command
 CREATE VIEW view_name AS SELECT ....... FROM table_name AS t JOIN table1_name AS t1 ON ...=...;
 ALTER VIEW view_name AS SELECT ....... FROM table_name AS t JOIN table1_name AS t1 ON ...=...;
 DROP VIEW view_name;
 
-# SQL FUNCTIONS : can simplify the queries and make the codes modular and reusable.
+# SQL FUNCTIONS : can simplify the queries and make the codes modular and reusable. Can save the SELECT command and can access the parameter.
 # Scalar Function: returns a single value in a result set.
 # Table valued Functions: when user is running a query and in the result set if the whole table is getting retrieved then we will call it as table valued function.
 
@@ -76,3 +76,35 @@ RETURNS INT
 AS
 BEGIN RETURN num*num
 END
+
+
+# STORED PROCEDURE 
+it can save all type of commands ex SELECT, UPDATE, DELETE...
+
+# Syntax to create stored procedure
+CREATE PROCEDURE Customer
+AS
+BEGIN SELECT * FROM Customer_data
+END
+
+# Syntax to execute stored procedure
+exec Customer
+
+OR
+
+CREATE PROCEDURE Customer_info @customer_id
+AS
+BEGIN SELECT * FROM Customer_data WHERE customer_id= @customer_id
+END
+
+exec Customer_info @customer_id=1;
+
+
+
+
+
+
+
+
+
+
