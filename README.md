@@ -63,3 +63,16 @@ Shared lock: when two users are trying to read the data from same table at same 
 Exclusive lock: when two users are trying to modify, alter or update the data in a table. The command of user gets commited first who process first and the command of the second user will go in processing. It will process after the first ones's.
 
 # VIEW- Virtual table, doesnt store the data, simplest the complex queries, enhances the security, encourage the reusability, data abstraction
+CREATE VIEW view_name AS SELECT ....... FROM table_name AS t JOIN table1_name AS t1 ON ...=...;
+ALTER VIEW view_name AS SELECT ....... FROM table_name AS t JOIN table1_name AS t1 ON ...=...;
+DROP VIEW view_name;
+
+# SQL FUNCTIONS : can simplify the queries and make the codes modular and reusable.
+# Scalar Function: returns a single value in a result set.
+# Table valued Functions: when user is running a query and in the result set if the whole table is getting retrieved then we will call it as table valued function.
+
+CREATE FUNCTION square_fun(num, INT)
+RETURNS INT
+AS
+BEGIN RETURN num*num
+END
