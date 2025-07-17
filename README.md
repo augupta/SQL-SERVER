@@ -106,7 +106,18 @@ exec Customer_info @customer_id=1;
 
 
 
+# TRIGGER: 
+A trigger in SQL Server is a special type of stored procedure that automatically executes (fires) in response to certain events occurring in the database, such as:
 
+
+# Create a trigger that logs deletions from the Employees table
+CREATE TRIGGER trg_AfterDelete ON Employees
+AFTER DELETE
+AS
+BEGIN
+    INSERT INTO EmployeeAudit (EmployeeID, DeletedOn)
+    SELECT EmployeeID, GETDATE() FROM deleted;
+END;
 
 
 
