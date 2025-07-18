@@ -126,6 +126,54 @@ SELECT emp_id, department, salary,
 FROM Employees;
 
 
+# Real world case scenario
+
+Orders
+order_id	customer_id	amount	order_date
+1	101	800	2024-02-12
+2	102	1200	2024-02-13
+3	101	500	2024-03-01
+
+Customers
+customer_id	name
+101	Maya
+102	Vipul
+103	Sarah
+
+Task:
+Write a query to display each customer’s name and their most recent order amount (if any order exists for them).
+If no order exists, show NULL for the amount.
+
+How to get only the most recent order’s amount (one row per customer):
+Approach 1: Use ROW_NUMBER() in a CTE/subquery to pick the most recent order per customer.
+
+sql
+WITH RankedOrders AS (
+  SELECT
+    c.name,
+    o.amount,
+    ROW_NUMBER() OVER (
+      PARTITION BY c.customer_id
+      ORDER BY o.order_date DESC
+    ) AS rn
+  FROM Customers c
+  LEFT JOIN Orders o ON c.customer_id = o.customer_id
+)
+SELECT name, amount AS 'recent order amount'
+FROM RankedOrders
+WHERE rn = 1;
+The LEFT JOIN ensures all customers are included (even if they have no orders).
+
+The window function assigns a rank (rn=1) to the most recent order (highest order_date) per customer.
+
+The outer query filters to rn=1 (the most recent order or NULL if not found).
+
+Your current query would list as many rows as matching orders exist for a customer (not one row per customer).
+
+
+
+
+
 # STORED PROCEDURE 
 it can save all type of commands ex SELECT, UPDATE, DELETE...
 
