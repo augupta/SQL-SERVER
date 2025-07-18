@@ -89,7 +89,8 @@ it can save all type of commands ex SELECT, UPDATE, DELETE...
 # Syntax to create stored procedure
 CREATE PROCEDURE Customer
 AS
-BEGIN SELECT * FROM Customer_data
+BEGIN 
+SELECT * FROM Customer_data
 END
 
 # Syntax to execute stored procedure
