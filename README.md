@@ -120,7 +120,12 @@ BEGIN
     SELECT EmployeeID, GETDATE() FROM deleted;
 END;
 
+# Authentication & Authorization
+Authentication: verifies the identity of a user
+Windows authentication: verifies the identity through windows credentials which are already validated in windows by the user.
+SQL Server authentication: verifies the identity within SQL Server by entering login credentials.
 
+Authorization: once user is authenticated, then will check what kind of permissions user has.
 
 
 
