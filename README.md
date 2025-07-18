@@ -37,6 +37,28 @@ JOIN Courses C ON E.CourseID = C.CourseID;
 
 # SELF JOIN
 
+# CTE 
+# Using a CTE, list each employee along with the name of their manager.
+Table: Employees
+
+emp_id	name	manager_id
+1	Raj	   NULL
+2	Priya	1
+3	Arun	1
+4	Meera	2
+WITH EmployeeManager AS (
+    SELECT
+        e.name AS employee_name,
+        m.name AS manager_name
+    FROM Employees e
+    LEFT JOIN Employees m ON e.manager_id = m.emp_id
+)
+SELECT * FROM EmployeeManager;
+
+# Explanation: e.manager_id = m.emp_id is the key—employee’s manager_id matches manager’s emp_id.
+LEFT JOIN ensures the CEO/Head (with NULL manager) is shown with no manager_name.
+Aliasing with AS makes column names clear.
+
 # Inserting Data using SELECT INTO statement to create a new table from the data of existing table or just insert the data from one table to another.
 INSERT INTO tem_emp(emp_id, name)
 SELECT emp_id, name FROM employees;
