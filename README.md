@@ -83,6 +83,26 @@ AS
 BEGIN RETURN num*num
 END
 
+# WINDOW FUNCTIONS
+
+# Write a query to display each customer_id, order_id, amount, and a running total (cumulative sum) of amount per customer, ordered by order_date.
+SELECT 
+    customer_id, 
+    order_id, 
+    amount,
+    SUM(amount) OVER (
+        PARTITION BY customer_id 
+        ORDER BY order_date 
+        ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+    ) AS [cumulative sum]
+FROM Orders
+ORDER BY customer_id, order_date;
+
+# Write a query to display each employee’s emp_id, department, salary, and the average salary in their department (as a column for each record).
+SELECT emp_id, department, salary,
+       AVG(salary) OVER (PARTITION BY department) AS [average salary]
+FROM Employees;
+
 
 # STORED PROCEDURE 
 it can save all type of commands ex SELECT, UPDATE, DELETE...
