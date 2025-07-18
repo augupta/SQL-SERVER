@@ -45,6 +45,7 @@ SELECT emp_id, name INTO new_emp FROM employees;
 
 # TOP & OFFSET FETCH
 SELECT TOP(10) * FROM employees;
+SELECT TOP 2 name, price FROM Products ORDER BY price DESC;
 SELECT * FROM employees ORDER BY emp_ID OFFSET 10 ROWS FETCH NEXT 20 ROWS ONLY;
 
 # TRANSACTION/CONCURRENCY are key concepts which are used to ensure data integrity and consistency when multiple users or processes accessing and modifying the data at the same time.
@@ -126,6 +127,49 @@ Windows authentication: verifies the identity through windows credentials which 
 SQL Server authentication: verifies the identity within SQL Server by entering login credentials.
 
 Authorization: once user is authenticated, then will check what kind of permissions user has.
+
+# Login & Users
+Login: login is created at sql server level and it allows user to connect with sql server instance by entering login credentials.
+User: User is created at database level. it allows login to acess specific database. Database administrator creates specific user for specific databases in a server. 
+
+# Creating Index:
+
+Simple index:
+
+CREATE INDEX idx_lastname ON employees(last_name);
+Rebuilding Indexes:
+
+Rebuild all indexes (admin):
+
+EXEC sp_MSforeachtable @command1="DBCC DBREINDEX ('?', '', 80)";
+
+# Window Functions
+ROW_NUMBER, RANK:
+
+Assign row numbers:
+
+sql
+SELECT employee_id, salary,
+       ROW_NUMBER() OVER (ORDER BY salary DESC) AS row_num
+FROM employees;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
