@@ -59,6 +59,31 @@ SELECT * FROM EmployeeManager;
 LEFT JOIN ensures the CEO/Head (with NULL manager) is shown with no manager_name.
 Aliasing with AS makes column names clear.
 
+# Using SUM(s.total_amount) inside RANK() directly doesn’t work, because window functions can’t reference aggregated columns from GROUP BY. Use a subquery or CTE to calculate the aggregates, then use the window function in the outer query.
+
+Write a query to display, for each product: product_name, category, total quantity sold, total sales amount, the rank of each product by total sales amount (highest = 1), Only include products in the "Electronics" category, Order the results by total sales amount DESC, Use JOIN, GROUP BY, ORDER BY, HAVING, and RANK() window function.
+
+WITH Productsales AS (
+  SELECT p.product_name, p.category,
+  SUM(s.quantity) AS 'total_quantity_sold',
+  SUM(s.total_amount) AS 'total_sales_amount'
+  FROM Products p INNER JOIN Sales s 
+  ON p.product_id = s.product_id
+  GROUP BY p.product_name, p.category
+  HAVING p.category='Electronics'
+  )
+SELECT
+  product_name,
+  category,
+  total_quantity_sold,
+  total_sales_amount,
+  RANK() OVER(ORDER BY total_sales_amount DESC) AS 'Sales rank'
+  FROM Productsales
+  ORDER BY total_sales_amount DESC;
+
+
+
+
 # Inserting Data using SELECT INTO statement to create a new table from the data of existing table or just insert the data from one table to another.
 INSERT INTO tem_emp(emp_id, name)
 SELECT emp_id, name FROM employees;
