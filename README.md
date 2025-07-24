@@ -270,6 +270,45 @@ FROM employees;
 
 
 
+# Creating a new table from the data of existing table
+CREATE TABLE purchases (
+    purchase_id INT PRIMARY KEY,
+    customer_id INT NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    purchase_date DATE NOT NULL
+);
+
+-- INSERT queries for all purchase records
+INSERT INTO purchases (purchase_id, customer_id, amount, purchase_date) VALUES
+(1, 101, 450.00, '2023-04-03'),
+(2, 102, 2500.00, '2023-04-10'),
+(3, 103, 1200.00, '2023-04-12'),
+(4, 101, 700.00, '2023-04-15'),
+(5, 104, 3400.00, '2023-04-18'),
+(6, 102, 800.00, '2023-04-19');
+
+SELECT * FROM purchases;
+
+-- Task
+-- Create a new table called CustomerTiers using SELECT INTO.
+-- The table should contain each distinct customer_id and a column called Tier which is:
+-- 'Platinum' if the customer's total purchase amount is ≥ 3000
+-- 'Gold' if their total is between 2000 and 2999
+-- 'Silver' if their total is between 1000 and 1999
+-- 'Bronze' otherwise
+-- Only customers who have at least one purchase in April 2023 should be included.
+
+SELECT DISTINCT customer_id,
+  CASE
+  WHEN SUM(amount)>=3000 THEN 'Platinum'
+  WHEN SUM(amount) BETWEEN 2000 and 2999 THEN 'Gold'
+  WHEN SUM(amount) BETWEEN 1000 and 1999 THEN 'Silver'
+  ELSE 'Bronze'
+  END AS 'Tier'
+  INTO CustomerTiers FROM purchases
+  GROUP BY customer_id;
+
+SELECT * FROM CustomerTiers;
 
 
 
